@@ -310,8 +310,19 @@
     box-shadow: 0 0 0 3px rgba(53,208,176,0.15);
   }
   #n8n-chat-mount {
-    height: 560px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
     position: relative;
+    --chat--window--width: 400px;
+    --chat--window--height: 620px;
+    --chat--toggle--background: #FF9142;
+    --chat--toggle--hover--background: #E67D33;
+    --chat--toggle--active--background: #CC6E2C;
+    --chat--toggle--color: #1A1006;
+    --chat--toggle--size: 56px;
     --chat--color-primary: #FF9142;
     --chat--color-primary-shade-50: #E67D33;
     --chat--color-primary-shade-100: #CC6E2C;
@@ -353,6 +364,12 @@
     font-size: 13.5px;
     text-align: center;
     padding: 32px;
+  }
+  .chat-frame-foot {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    padding: 0 20px 22px;
   }
 
   /* ---------- HOW IT WORKS ---------- */
@@ -521,8 +538,9 @@
         <div class="dots"><span></span><span></span><span></span></div>
       </div>
       <div id="n8n-chat-mount">
-        <div class="chat-placeholder" id="chatPlaceholder">Loading assistant…</div>
+        <div class="chat-placeholder" id="chatPlaceholder">Preparing the assistant…</div>
       </div>
+      <div class="chat-frame-foot">Click the chat button to start — opens in its own window so it won't disrupt the page.</div>
     </div>
   </div>
 </section>
@@ -626,7 +644,7 @@
     createChat({
       webhookUrl: 'https://annotate-reactive-shell.ngrok-free.dev/webhook/d9a0c4d2-6bc9-4709-9923-23196b7bf189/chat',
       target: '#n8n-chat-mount',
-      mode: 'fullscreen',
+      mode: 'window',
       showWelcomeScreen: true,
       initialMessages: [
         "Hi — I'm CoreFlash's presales assistant.",
@@ -634,7 +652,7 @@
       ],
       i18n: {
         en: {
-          title: '',
+          title: 'CoreFlash Presales',
           subtitle: '',
           footer: '',
           getStarted: 'Start inquiry',
