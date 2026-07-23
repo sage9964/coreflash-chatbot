@@ -640,12 +640,25 @@
 
   const placeholder = document.getElementById('chatPlaceholder');
 
+  // Force a brand-new conversation on every page load — don't resume a
+  // previous visitor's session (loadPreviousSession:false should handle
+  // this, but the widget stores its session id under a localStorage key
+  // starting with "n8n-chat", so clear that directly as a safety net too).
+  try {
+    Object.keys(window.localStorage)
+      .filter((k) => k.startsWith('n8n-chat'))
+      .forEach((k) => window.localStorage.removeItem(k));
+  } catch (e) {
+    // localStorage may be unavailable (privacy mode, etc.) — safe to ignore
+  }
+
   try {
     createChat({
       webhookUrl: 'https://annotate-reactive-shell.ngrok-free.dev/webhook/d9a0c4d2-6bc9-4709-9923-23196b7bf189/chat',
       target: '#n8n-chat-mount',
       mode: 'window',
       showWelcomeScreen: true,
+      loadPreviousSession: false,
       initialMessages: [
         "Hi — I'm CoreFlash's presales assistant.",
         "Tell me a bit about what you're looking for: roughly how many units, what you'll use them for, and who you're buying on behalf of."
