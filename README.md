@@ -3,7 +3,7 @@
 An AI-powered presales assistant for a fictional bulk/OEM SSD vendor, built to demonstrate how a business can triage inbound sales inquiries, qualify real buyers from tire-kickers, and book consultations straight onto a calendar — without a human reading every inquiry first.
 
 **Live demo:** [sage9964.github.io/coreflash-chatbot](https://sage9964.github.io/coreflash-chatbot)
-**Demo video:** *(add Loom walkthrough link here once recorded)*
+**Demo video:** https://www.loom.com/share/8e1fb85321e945579208fcb4838d45fd
 
 ---
 
